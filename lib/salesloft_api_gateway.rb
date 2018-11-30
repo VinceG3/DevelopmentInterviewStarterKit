@@ -7,7 +7,7 @@ class SalesloftAPIGateway
 
     http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Get.new(url)
-    request["authorization"] = "Bearer #{ENV['API_KEY']}"
+    request["authorization"] = "Bearer #{ENV['SALESLOFT_API_KEY']}"
     request["cache-control"] = 'no-cache'
 
     response = http.request(request)
