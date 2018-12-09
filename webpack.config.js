@@ -1,15 +1,16 @@
 'use strict';
 
 require('dotenv').config()
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var BUILD_DIR = path.resolve(__dirname, './client/dist');
-var APP_DIR = path.resolve(__dirname, './client/src');
+const BUILD_DIR = path.resolve(__dirname, './client/dist');
+const APP_DIR = path.resolve(__dirname, './client/src');
 
-var config = {
+const config = {
   entry: APP_DIR + '/index.js',
   output: {
     path: BUILD_DIR,
@@ -30,7 +31,8 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv(),
   ],
 
   devServer: {

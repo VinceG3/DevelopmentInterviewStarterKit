@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { LandingPage } from './LandingPage'
+import { TabLayout } from './TabLayout'
+import People from './People'
 
 const theme = {
   main: {
@@ -21,9 +23,11 @@ const theme = {
 const App = ({ store }) => (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <Router>
-          <Route exact path="/" component={LandingPage}/>
-      </Router>
+      <TabLayout>
+        <Router>
+          <Route exact path="/" component={People} />
+        </Router>
+      </TabLayout>
     </ThemeProvider>
   </Provider>
 );
