@@ -6,16 +6,20 @@ export default class PersonStore extends Reflux.Store {
     super();
     this.state = {
       people: [],
+      metadata: {},
     }
-    PeopleActions.getPeople.complete.listen(this.onPeopleRetrieved)
-    PeopleActions.getPeople.error.listen(this.onPeopleError)
+    this.listenTo(PeopleActions.getPeople.complete, this.onPeopleRetrieved)
+    this.listenTo(PeopleActions.getPeople.error, this.onPeopleError)
   }
 
-  onPeopleRetrieved() {
-    console.log('hi')
+  onPeopleRetrieved(response) {
+    this.setState({
+      people: response.data,
+      metadata: response.metadata,
+    })
   }
 
-  onPeopleError() {
-    console.log('yikes!')
+  onPeopleError(error) {
+    console.log(error)
   }
 }

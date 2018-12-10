@@ -19,7 +19,7 @@ let store = createStore(Reducers, applyMiddleware(...middlewares))
 window.store = store
 
 // bootstrap state
-store.dispatch(fetchMe());
+// store.dispatch(fetchMe());
 
 ReactDOM.render(
   <App store={store} />,
