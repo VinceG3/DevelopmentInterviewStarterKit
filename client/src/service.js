@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const apiRequest = function(endpoint, method, params) {
   const uri = `${endpoint}`;
-  return method(uri, params)
+
+  return method(uri, {params: params})
     .then(res => { this.complete(res.data) })
     .catch(err => { this.error(err) })
 };

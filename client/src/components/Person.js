@@ -11,15 +11,12 @@ const Wrapper = styled.div`
   border-bottom: 1px solid black;
 `
 const Name = styled.div`
-  min-width: 350px;
   display: inline-block;
 `
 const Email = styled.div`
-  min-width: 350px;
   display: inline-block;
 `
 const JobTitle = styled.div`
-  min-width: 350px;
   display: inline-block;
 `
 export default class Person extends Component {
@@ -27,11 +24,9 @@ export default class Person extends Component {
     const { first_name, last_name, email_address, title } = this.props
     return (
       <Wrapper>
-        <PrevPage />
         <Name>{`${first_name} ${last_name}`}</Name>
         <Email>{email_address}</Email>
         <JobTitle>{title}</JobTitle>
-        <NextPage />
       </Wrapper>
     )
   }

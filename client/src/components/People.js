@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PersonStore from '../stores/PersonStore'
 import PeopleActions from '../actions/PeopleActions'
 import Person from './Person';
-import PageControls from './PageControls';
+import pageControls from './PageControls';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,16 +13,24 @@ const Wrapper = styled.div`
 const Container = styled.div`
   background: white;
   padding: 0 40px;
+  width: 80%;
 `
-
+const PageControls = styled(pageControls)`
+  margin: 10px 0;
+`
 export default class People extends Reflux.Component {
   constructor() {
     super();
     this.store = PersonStore;
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
 
   componentDidMount() {
-    PeopleActions.getPeople()
+    PeopleActions.getPeople();
+  }
+
+  handlePageChange(pageNum) {
+    PeopleActions.getPeople({ page: pageNum });
   }
 
   render() {
@@ -30,7 +38,7 @@ export default class People extends Reflux.Component {
     return (
       <Wrapper>
         <Container>
-          <PageControls {...metadata.paging} />
+          <PageControls {...metadata.paging} onPageChange={this.handlePageChange} />
           {people.map(person => (<Person {...person} key={person.id}/>))}
         </Container>
       </Wrapper>

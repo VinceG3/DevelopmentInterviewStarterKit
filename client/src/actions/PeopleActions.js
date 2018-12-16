@@ -7,9 +7,9 @@ PeopleActions.getPeople = Reflux.createAction({
   children: ['complete', 'error']
 })
 
-PeopleActions.getPeople.listen(function() {
+PeopleActions.getPeople.listen(function(params = {}) {
   const endpoint = 'api/people';
-  return Service.getRequest.call(this, endpoint);
+  return Service.getRequest.call(this, endpoint, params);
 })
 
 export default PeopleActions;

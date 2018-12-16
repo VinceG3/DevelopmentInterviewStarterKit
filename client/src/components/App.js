@@ -1,10 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
-import { ThemeProvider } from 'styled-components'
-
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { LandingPage } from './LandingPage'
 import { TabLayout } from './TabLayout'
 import People from './People'
 
@@ -21,19 +17,11 @@ const theme = {
 };
 
 const App = ({ store }) => (
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <TabLayout>
-        <Router>
-          <Route exact path="/" component={People} />
-        </Router>
-      </TabLayout>
-    </ThemeProvider>
-  </Provider>
+  <TabLayout>
+    <Router>
+      <Route exact path="/" component={People} />
+    </Router>
+  </TabLayout>
 );
-
-App.propTypes = {
-  store: PropTypes.object.isRequired
-};
 
 export default App

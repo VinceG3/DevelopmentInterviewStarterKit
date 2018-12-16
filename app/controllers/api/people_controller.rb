@@ -3,8 +3,7 @@ class Api::PeopleController < Api::BaseController
 
   def list
     people_params
-    api_results = SalesloftApiGateway.request(:all_people, people_params.to_h)
-    render plain: api_results
+    @people = Person.cached.where(people_params)
   end
 
   private
