@@ -20,7 +20,7 @@ class Person < ApplicationRecord
     def cache_expired?
       # cache invalidation here is just stubbed in here. A real solution might be a redis request
       # on a local instance, or maybe a database request if perf isn't that important atm
-      return true if ENV['ALWAYS_PURGE']
+      return true if ENV['ALWAYS_PURGE'] == 'true'
       all.blank?
     end
   end

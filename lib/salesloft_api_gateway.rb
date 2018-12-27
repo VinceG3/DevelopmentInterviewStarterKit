@@ -10,6 +10,7 @@ class SalesloftApiGateway
       http = Net::HTTP.new(url.host, url.port)
       puts "loading #{endpoint} page #{params[:page]}"
       request = Net::HTTP::Get.new(url)
+      binding.pry
       request["authorization"] = "Bearer #{ENV['SALESLOFT_API_KEY']}"
       request["cache-control"] = 'no-cache'
 
